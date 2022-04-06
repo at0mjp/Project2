@@ -10,10 +10,17 @@
             <h1 style="text-align: center">Upload Resume PDF</h1>
         </div>
 
-        <div class="fileSelector" style="text-align: center">
+        <!--
+        <div id="fileSelector" style="text-align: center">
             <input type="file" id="myFile" name="filename" style="border: 2px solid black">
             <input type="submit" style="border: 1px solid darkgray; outline-style: outset">
         </div>
+        -->
+
+        <form action = "/apply" method="POST" enctype="multipart/form-data" style="text-align: center">
+            <input type="file" name="file" id="file" style="border: 2px solid black" />
+            <input type="submit" id="submit" style="border: 1px solid darkgray; outline-style: outset" />
+        </form>
     </main>
 </body>
 </html>

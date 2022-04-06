@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_bootstrap5 import Bootstrap
 import PyPDF2
+from werkzeug.utils import secure_filename
+import os
+from os import abort
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -44,15 +47,37 @@ def index():  # put application's code here
     return render_template("index.html", user=user)
 
 
-@app.route('/apply')
+# normally this info would be in a config file, but it is fine here for now
+# specifies the size, type and path for the user's upload in apply route
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
+app.config['UPLOAD EXTENSIONS'] = ['.pdf']
+app.config['UPLOAD PATH'] = 'uploads'
+
+
+@app.route('/apply', methods=['GET', 'POST'])
 def apply():
-    return render_template("apply.html")
     # python section for upload functionality
+    if request.method == "POST":
+        if request.files:                           # if there are files...
+            resume = request.files["file"]          # "file" because it is the name of the input on apply.html
+            print(resume)                           # for testing... prints the file name in the terminal
+
+            # save the file to the uploads directory and uses the file's name as the filename
+            resume.save(os.path.join(app.config['UPLOAD PATH'], resume.filename))
+
+            return redirect(request.url)            # returns to the page after submitting the file
+
+    return render_template("apply.html")
+
+
+
+
 
 @app.route('/display')
-def apply():
+def display():
     return render_template("display.html")
     # python section for text extraction and submission button
+
 
 if __name__ == '__main__':
     app.run(debug=True)

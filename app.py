@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap5 import Bootstrap
 import PyPDF2
 from werkzeug.utils import secure_filename
@@ -65,12 +65,9 @@ def apply():
             # save the file to the uploads directory and uses the file's name as the filename
             resume.save(os.path.join(app.config['UPLOAD PATH'], resume.filename))
 
-            return redirect(request.url)            # returns to the page after submitting the file
+            return redirect(url_for('display'))     # redirects user to the review and submit page
 
     return render_template("apply.html")
-
-
-
 
 
 @app.route('/display')

@@ -33,15 +33,27 @@ def index():  # put application's code here
         text = pageObj.extractText().split('\n')
         # Finally the lines are stored into list
         # For iterating over list a loop is used
-        user['name'] = text[5]
+        user['name'] = text[5:8]
+        user['address'] = text[10] + text[12]
+        user['phone'] = text[14:16]
         user['email'] = text[18]
-
-        '''for i in range(len(text)):
+        user['qual_summary'] = text[23:35]
+        user['education'] = text[40:53]
+        user['accomplishments'] = text[58:105]
+        user['work_history'] = text[110:131]
+        user['affiliation'] = text[136:138]
+        user['computer_skills'] = text[146:150]
+        counter = 0
+        for i in range(len(text)):
             # Printing the line
             # Lines are seprated using "\n"
-            print(text[i], end="\n")
+            print(counter, "\t", text[i], end="\n")
             # For Seprating the Pages
-        '''
+            counter = counter + 1
+        print(user['name'])
+        print(user['address'])
+        print(user['email'])
+
     # closing the pdf file object
     pdfFileObj.close()
     return render_template("index.html", user=user)
@@ -72,7 +84,7 @@ def apply():
 
 @app.route('/display')
 def display():
-    return render_template("display.html")
+    return render_template("display.html", user=user)
     # python section for text extraction and submission button
 
 

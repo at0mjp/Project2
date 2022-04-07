@@ -2,20 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Application</title>
+    <title>Apply for Jobs - HEB</title>
     <link rel="stylesheet" href="static/bootstrap.css">
+    <link rel="stylesheet" href="../static/assets/dist/css/home.css">
+    <link rel="stylesheet" href="../static/assets/dist/css/navbar-top.css">
+    <link rel="stylesheet" href="../static/assets/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <nav></nav>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+      <div class="container-fluid">
+        <img class="navbar-brand d-block mx-auto d-flex mb-0" src="../static/assets/images/heb.jpeg" alt="" width="75" height="80">
+        <!-- <a class="navbar-brand" href="#">Computer Science Students</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0 px-3">
+            <li class="nav-item">
+              <a class="nav-link active fw-bold " href="{{ url_for('index') }}">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
 
-    <h1 class="m-5 p-5">ABC Company</h1>
-    <div class="m-5 p-5">
+    <h1 class="mx-5 my-2">Software Engineer II, Data Platform</h1>
+    <h3 class="mx-5">H-E-B Grocery Stores</h3>
+    <h4 class="mx-5">San Marcos, TX</h4>
+    <p class="mx-5 py-1">If you’re someone who enjoys taking on new challenges, working in a rapidly changing environment, learning new skills, and applying it all to solve large and impactful business problems, we want you as part of our team. Our Partners thrive The H-E-B Way. In the Software Engineer II, Data Platform position, that means you have a… HEART FOR PEOPLE… you can organize multiple engineers, negotiate solutions, and provide upward communication HEAD FOR BUSINESS… you consistently demonstrate and uphold the standards of coding, infrastructure, and process PASSION FOR RESULTS… you’re capable of high-velocity contributions in multiple technical domains We make capable the successful operation, secure modification, and agile creation of large-scale fault tolerant systems which delight our internal customers beyond expectation...which is easier said than done. As a Software Engineer II, Data Platform you will assist in the alignment of technology standards, architectural patterns, and practices across Programs/Projects to ensure reuse, reliability, performance, sustainability, and flexibility. Aides in the development of specifications for enterprise services, descriptions of applied integration patterns, and other templates for use as architectural deliverables/artifacts. What You’ll Do - Leverages approved languages and development tools to communicate with end-users, gather requirements, code / configure, maintain, test, and debug modifications to existing applications of basic to medium complexity, or executes the same in the development of new enterprise software services and applications.</p>
+    <hr class="flex-column">
+    <div class="mx-5 py-4">
         Name:
         <input type="text" name="name" value={{ user.name }}><br><br>
 
         Email:
         <input type="email" name="email" value={{ user.email }}><br>
 
+    </div>
+    <div class="mx-5">
+        <a class="btn btn-outline-info" href="{{ url_for('apply') }}">Apply Today!</a>
     </div>
 
 </body>

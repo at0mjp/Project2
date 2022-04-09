@@ -33,17 +33,21 @@ def index():  # put application's code here
         text = pageObj.extractText().split('\n')
         # Finally the lines are stored into list
         # For iterating over list a loop is used
-        user['name'] = text[5:8]
-        user['address'] = text[10] + text[12]
-        user['phone'] = text[14:16]
+        user['name'] = text[5] + text[6] + text[7] + text[8]
+        user['address'] = text[10] + " " + text[12]
+        user['phone'] = ''.join(text[14:17])
         user['email'] = text[18]
-        user['qual_summary'] = text[23:35]
-        user['education'] = text[40:53]
-        user['accomplishments'] = text[58:105]
-        user['work_history'] = text[110:131]
-        user['affiliation'] = text[136:138]
-        user['computer_skills'] = text[146:150]
+        user['qual_summary'] = ''.join(text[23:35])
+        user['education'] = ''.join(text[40:53])
+        user['accomplishments'] = ''.join(text[58:105])
+        user['work_history'] = ''.join(text[110:131])
+        user['affiliation'] = ''.join(text[136:138])
+        user['computer_skills'] = ''.join(text[146:150])
         counter = 0
+
+        for item in user:
+            user[item] = str(user[item]).replace(" ", " ")
+
         for i in range(len(text)):
             # Printing the line
             # Lines are seprated using "\n"

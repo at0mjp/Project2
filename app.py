@@ -37,12 +37,12 @@ def index():  # put application's code here
         user['address'] = text[10] + " " + text[12]
         user['phone'] = ''.join(text[14:17])
         user['email'] = text[18]
-        user['qual_summary'] = ''.join(text[23:35])
-        user['education'] = ''.join(text[40:53])
-        user['accomplishments'] = ''.join(text[58:105])
-        user['work_history'] = ''.join(text[110:131])
-        user['affiliation'] = ''.join(text[136:138])
-        user['computer_skills'] = ''.join(text[146:150])
+        user['qual_summary'] = ''.join(text[23:36])
+        user['education'] = ''.join(text[40:54])
+        user['accomplishments'] = ''.join(text[58:106])
+        user['work_history'] = ''.join(text[110:133])
+        user['affiliation'] = ''.join(text[136:140])
+        user['computer_skills'] = ''.join(text[146:151])
         counter = 0
 
         for item in user:
